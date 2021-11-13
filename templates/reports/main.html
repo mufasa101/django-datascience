@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load static %} {% block page %} {% block title %}Reports{% endblock title %}
+
+<div class="col-12">
+  <div class="w-100">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+           <div class="row p-3">
+          {% for r in reports  %}
+          
+              <div class="col-md-6 col-12">
+                <div class="card flex-fill w-100" style="border: 2px solid #d0d3d4">
+                  <div class="card-header bg-light">
+                    <h2 class="card-title mb-0">{{ r.name }}</h2>
+                  </div>
+                  <div class="card-body py-3">
+                    <div class="chart chart-sm my-3">
+                      <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand"><div class=""></div></div>
+                        <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
+                      </div>
+                      {% if r.image %}
+                         <img
+                        class="d-flex justify-content-around w-75"
+                        style="margin-left: auto; margin-right: auto"
+                        src="{{ r.image.url }}"
+                        alt="{{ r.name}}"
+                      />
+                      
+                      {% endif %}
+                   
+                    </div>
+                    <h5 class="text-left mt-2">Description:</h5>
+                    <div class="my-2">{{ r.remarks }}</div>
+                    <div class="modal-footer">
+                      <a href="{{ r.get_absolute_url }}" class="btn btn-outline-primary" >Click to open</a>
+                      <a href="{% url 'reports:pdf' r.pk %}" class="btn btn-danger" >Download pdf</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock page %}

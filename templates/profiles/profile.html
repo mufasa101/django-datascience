@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% load static %} {% block page %} {% block title %}Profile{% endblock title %}
+
+<div class="col-12">
+  <div class="w-100">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            {% if confirm %}
+            <div class="alert success-alert">
+              <h4 style="line-height: 160%"><span style="font-weight: 700; color: #178344">Good job: </span>Profile has been updated</h4>
+            </div>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <form action="" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row mb-4">
+                <div class="col-md-8">
+                  <div class="row mb-4">
+                    <div class="col-12 col-md-6">
+                      <label for="inputUsername">first name</label>
+                      <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}" placeholder="Joseph" required />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="inputUsername">Last name</label>
+                      <input type="text" class="form-control" name="last_name" value="{{ user.last_name }}" placeholder="Disraeli" required />
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <label for="inputUsername">email</label>
+                      <input type="email" class="form-control" name="email" value="{{ user.email }}" placeholder="Enter your email" />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="inputUsername">Biography</label>
+                    <textarea rows="3" class="form-control" id="id_bio" name="bio" placeholder="Tell something about yourself">
+{{ profile.bio }}</textarea
+                    >
+                  </div>
+                </div>
+                <div class="col-md-4">
+              
+                  <div class="text-center">
+                    {% if profile.avatar %}
+                <img
+                      alt="avatar"
+                      src="{{ profile.avatar.url }}"
+                      name="avatar"
+                      id="_idavatar"
+                      class="rounded-circle img-responsive mt-2"
+                      width="128"
+                      height="128"
+                    />
+                    <div class="mt-2">
+                      <span class="btnd btn-primaryd">Avatar: {{ profile.avatar }}</span>
+                    </div>
+                
+                {% endif %}
+                    
+
+                    <div class="mt-2">
+                      <input class="btn btn-primary" type="file" name="avatar" accept="image/*" id="id_avatar" />
+
+                      {% comment %} <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span> {% endcomment %}
+                    </div>
+                    <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit mt-5" class="btn btn-primary px-5 py-3">Save changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock page %}

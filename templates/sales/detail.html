@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% load static %} {% block page %} {% block title %}About the sale{% endblock title %}
+<div class="col-12">
+  <div class="w-100">
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        <div class="col-xxl-3">
+          <div class="card">
+            <div class="card-header bg-light border-bottom">
+              <h2 class="card-title mb-0">Details</h2>
+            </div>
+            <div class="card-body">
+              <table class="table table-sm my-2">
+                <tbody>
+                  <tr>
+                    <th>Transaction</th>
+                    <td>{{ object.transaction_id }}</td>
+                  </tr>
+                  <tr>
+                    <th>Sales guy</th>
+                    <td>{{object.sales_guy.user.get_full_name}}</td>
+                  </tr>
+                  <tr>
+                    <th>Total price</th>
+                    <td>{{ object.total_price }}</td>
+                  </tr>
+                  <tr>
+                    <th>Customer</th>
+                    <td>{{object.customer.name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div class="card mb-3 bg-light cursor-grab">
+          <table class="table table-striped table-hover">
+            {% for obj in sales %}{{obj.transaction_id}}{% endfor %}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                {% comment %} <th>Customer</th> {% endcomment %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for obj in object.get_positions %}
+              <tr>
+                <td>{{forloop.counter }}</td>
+                <td>{{obj.product.name}}</td>
+                <td>{{obj.quantity}}</td>
+                <td>{{obj.price}}</td>
+                {% comment %} <td>{{obj.price}}</td> {% endcomment %}
+            
+               
+              </tr>
+              {% endfor %}
+          
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock page %}

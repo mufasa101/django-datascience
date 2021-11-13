@@ -1,0 +1,61 @@
+{% extends 'outside_base.html' %} {% load static %} {% block page %}
+ {% if error_message %}
+
+      <div class="alert danger-alert">
+              <h4 style="line-height: 160%"><span style="letter-spacing: 2px;font-weight: 700; color: #8f130c; font-size:1.5em; padding:10px">Error: </span>{{ error_message }}</h4>
+            </div>
+            {% endif %}
+   
+<div class="login-reg-panel d-flex align-items-center" style="top: 300 !important; ">
+
+ 
+		<div class="login-info-box">
+			<h2>Have an account?</h2>
+			<p>Sign up to continue</p>
+			<label id="label-register" for="log-reg-show">Login</label>
+			<input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+		</div>
+							
+		<div class="register-info-box">
+			<h2>Don't have an account?</h2>
+			<p>Register to play around with the app</p>
+			<label id="label-login" for="log-login-show">Register</label>
+			<input type="radio" name="active-log-panel" id="log-login-show">
+		</div>
+							
+		<div class="white-panel">
+			<div class="login-show">
+            <form action="" method="POST">
+            	<h2>LOGIN</h2>
+                  {% csrf_token %}
+                {{form}}
+                <input type="hidden" name="submit_type" value="login">
+                <button class="btn btn-primary px-5 py-2" style="margin-top:2rem" type="submit">Login</button>
+            </form>
+			
+			</div>
+			<div class="register-show">
+            <form action="" method="post">
+            {% comment %} {% csrf_token %} {% endcomment %}
+            <h2>REGISTER</h2>
+				{% csrf_token %}
+                {% comment %} {{form_signup}} {% endcomment %}
+                    {% for field in form_signup %}
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {% comment %} {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %} {% endcomment %}
+                      
+                    </p>
+                    {% endfor %}
+                     <input type="hidden" name="submit_type" value="register">
+                <button class="btn btn-primary px-5 py-2"  style="margin-top:2rem" type="submit">Register</button>
+            </form>
+				
+			</div>
+		</div>
+	</div>
+
+{% endblock page %}

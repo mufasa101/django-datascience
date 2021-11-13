@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>PDF {{obj.name}}</title>
+    <style>
+      .image {
+        width: 100%;
+        height: auto;
+        margin-right:auto;
+        margin-left:auto;
+        display:flex;
+        justify-content:end
+      }
+    </style>
+  </head>
+  <body>
+      <div >
+        <h1>{{obj.name}}</h1>
+      </div>
+      <hr />
+      <img src="{{obj.image.path}}" class="image" />
+      <br />
+      <h3>Remarks</h3>
+      <p>{{obj.remarks}}</p>
+      <hr />
+      <p>author: <b>{{obj.created_by.user.get_full_name}}</b></p>
+      <p>created: <b>{{obj.created_on}}</b></p>
+    
+  </body>
+</html>

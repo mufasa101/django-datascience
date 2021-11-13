@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% load static %} {% block page %} {% block title %}Reports{% endblock title %}
+
+<div class="col-12">
+  <div class="w-100">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row p-3">
+              <div class="col-12">
+                <div class="card flex-fill w-100" style="border: 2px solid #d0d3d4">
+                  <div class="card-header bg-light">
+                    <h2 class="card-title mb-0"> {{ report.name }}</h2>
+                   
+                  </div>
+                  <div class="card-body py-3">
+                    <div class="chart chart-sm my-3">
+                      <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand"><div class=""></div></div>
+                        <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
+                      </div>
+                      {% if report.image %}
+                         <img
+                        class="d-flex justify-content-around w-75"
+                        style="margin-left: auto; margin-right: auto"
+                        src="{{ report.image.url }}"
+                        alt="{{ report.name}}"
+                      />
+                      
+                      {% endif %}
+                    </div>
+                    <div class="bg-light p-3">
+                      <h5 class="text-left mt-2">Description:</h5>
+                      <div class="my-2">  {{ report.remarks }}</div>
+                      <h5 class="text-left mt-2">Created by:</h5>
+                      <div class="my-2">{{ report.created_by.user.get_full_name }}</div>
+                      <h5 class="text-left mt-2">Created on:</h5>
+                      <div class="my-2">{{ report.created_on }}</div>
+
+                      <div class="modal-footer">
+                        {% comment %} <button type="button" class="btn btn-outline-primary">Click to open</button> {% endcomment %}
+                        <button type="button" class="btn btn-danger px-4 py-2">Download pdf</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock page %}

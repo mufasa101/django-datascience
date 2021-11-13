@@ -1,0 +1,8 @@
+Transactions,Product,Quantity,Customer,Date
+D100,jets,1,test customer,9/2/2021
+D100,gold,3,test customer,9/2/2021
+D100,phones,2,test customer,9/2/2021
+D103,phones,4,test customer 1,9/5/2021
+D104,phones,5,test customer 2,9/6/2021
+D105,jets,1,test customer 3,9/7/2021
+D106,jets,3,test customer 4,9/8/2021

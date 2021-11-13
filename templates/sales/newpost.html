@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% load static %} {% block page %} {% block title %}Create a post{% endblock title %}
+<div class="col-12">
+  <div class="w-100">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col mt-0">
+                <h5 class="card-title">Say what's on your mind?</h5>
+              </div>
+              <textarea name="test" id="" cols="30" rows="3"></textarea>
+            </div>
+            <div class="row mt-3">
+              <div class="col mt-0">
+                <h5 class="card-title">Enter a title</h5>
+              </div>
+              <input type="text" class="form-s w-100" name="title" />
+            </div>
+            <div class="row mt-3">
+              <div class="col mt-0">
+                <h5 class="card-title">Write a caption</h5>
+              </div>
+              <input type="text" class="form-s w-100" name="title" />
+            </div>
+            <div class="row mt-3">
+              <div class="col mt-0">
+                <h5 class="card-title">Select a tier</h5>
+              </div>
+              <select name="validation-select" aria-invalid="false">
+                <option disabled selected> Choose an option</option>
+                
+                  <option value="skis">Skis</option>
+                  <option value="skins">Skins</option>
+                  <option value="poles">Poles</option>
+                
+              </select>
+            </div>
+            <div class="row mt-3 p-42">
+              <div class="col mt-0">
+                <h4 class="card-title">Lastly, upload a good image</h4>
+              </div>
+              <input style="border: 3px solid #979a9a" type="file" class="validation-file p-3" name="validation-file" />
+            </div>
+
+            <div class="row py-3 d-flex justify-content-start mt-3">
+              <button class="btn btn-primary px-5 col-sm-12 col-md-3 py-3">Click to post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock page %}

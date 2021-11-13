@@ -1,0 +1,104 @@
+{% extends 'base.html' %} {% load static %} {% block page %} {% block title %}Generate a report{% endblock title %}
+
+<div class="col-12">
+  <div class="w-100">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+           {% if confirm %}
+            <div class="alert success-alert">
+              <h4 style="line-height: 160%"><span style="font-weight: 700; color: #178344">Good job: </span> {{ no_data }}</h4>
+            </div>
+            {% endif %}
+            <div class="card-actions float-end">
+              <a href="#" class="me-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-refresh-cw align-middle"
+                >
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <polyline points="1 20 1 14 7 14"></polyline>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+              </a>
+              <div class="d-inline-block dropdown show">
+                <a href="#" data-bs-toggle="dropdown" data-bs-display="static">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-more-vertical align-middle"
+                  >
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="12" cy="5" r="1"></circle>
+                    <circle cx="12" cy="19" r="1"></circle>
+                  </svg>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+            </div>
+            <h5 class="card-title mb-0">Public info</h5>
+          </div>
+          <div class="card-body">
+            <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="row mb-4">
+                <div class="col-md-8">
+                  <div class="mb-3">
+                    <label for="inputUsername">Username</label>
+                    <input type="text" class="form-control" id="inputUsername" placeholder="Username" />
+                  </div>
+                  <div class="mb-3">
+                 
+                    <label for="inputUsername">Biography</label>
+                    <textarea rows="3" class="form-control" id="id_bio" name="bio" placeholder="Tell something about yourself">{{ profile.bio }}</textarea>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="text-center">
+                    <img alt="Chris Wood" src="{{ profile.avatar.url }}" name="avatar" id="_idavatar" class="rounded-circle img-responsive mt-2" width="128" height="128" />
+                    <div class="mt-2">
+                     <input class="btn btn-primary" type="file" name="avatar" value={{  profile.avatar }} accept="image/*" id="id_avatar">
+
+                      {% comment %} <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span> {% endcomment %}
+                    </div>
+                    <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit mt-5" class="btn btn-primary px-5 py-3">Save changes</button>
+            </form>
+          </div>
+        </div>
+
+
+
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock page %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %}  {% block page %} {% block title %}Upload a document{% endblock title %} {% block dropzone %}
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+{% endblock dropzone %} {% block scripts %}
+<script src="{% static 'sales/upload.js' %}" defer></script>
+{% endblock scripts %}
+
+<div class="card">
+  <div class="card-body">
+    <div class="col-12">
+      <div class="w-100">
+        <div class="row">
+          <div class="col-12 col-lg-4">
+          <a class="btn btn-success px-5 py-2 mt-5 mb-3 pulse-button"  href="/media/csv/positions.csv" download> Download the csv template </a>
+            {% comment %} <button class="btn btn-success px-5 py-2 mt-5 mb-3 pulse-button" data-bs-toggle="modal" data-bs-target="#reportModal" id="report-btn">
+             Download the csv template
+            </button> {% endcomment %}
+          </div>
+        </div>
+        <div class="row">
+          <br />
+          <div id="alert-box"></div>
+          <form id="my-dropozne" class="dropzone dz">
+            {% csrf_token %}
+            <div class="dz-message" data-dz-message>
+              <span class="card-title"
+                ><span class="display-5"> Hi,</span><br />
+                Download the csv template above, <br />fill it with your data (then drop it here)</span
+              >
+            </div>
+
+            <div class="fallback">
+              <input name="file" type="file" multiple />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock page %}

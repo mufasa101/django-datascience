@@ -1,0 +1,47 @@
+{% load static %}
+{% url 'sales:index' as path_to_home %}
+{% url 'sales:list' as path_to_sales %}
+{% url 'sales:csv' as path_to_from_file %}
+{% url 'reports:main' as path_to_reports %}
+ {% url 'profiles:profile' as path_to_my_profile %}
+<nav id="sidebar" class="sidebar">
+ 
+  <div class="sidebar-content">
+
+    <div class="sidebar-user">
+              <img  src="{% static  'images/logo4.jpg' %}" class="img-fluid roundeSd-circle mb-2" alt="Logo" />
+
+      <div class="fw-bold">Django + pandas</div>
+      <small>With seaborn and matplotlib</small>
+    </div>
+    <ul class="sidebar-nav mx-2">
+      <li class="sidebar-header">Main</li>
+
+    <li class="sidebar-item">
+        <a class="sidebar-link" href="{{path_to_home}}"> <i class="align-middle me-2 fas fa-bell"></i> <span class="align-middle">Generate sales reports</span> </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="{{path_to_sales}}"> <i class="align-middle me-2 fas fa-home"></i> <span class="align-middle">View sales transactions</span> </a>
+      </li>
+  
+      <li class="sidebar-item">
+        <a class="sidebar-link"href="{{path_to_reports}}"> <i class="align-middle me-2 fas fa-envelope"></i> <span class="align-middle">View saved reports</span> </a>
+      </li>
+         {% comment %} <li class="sidebar-item">
+        <a class="sidebar-link" href="#"> <i class="align-middle me-2 fas fa-user"></i> <span class="align-middle">Create reports</span> </a>
+      </li> {% endcomment %}
+    
+     <li class="sidebar-header">
+						About me
+					</li>
+      <li class="sidebar-item">
+        <a class="sidebar-link"href="{{path_to_my_profile}}"> <i class="align-middle me-1 fas fa-fw fa-user"></i> <span class="align-middle">View profile</span> </a>
+      </li>
+    <li class="sidebar-item mt-4">
+        <a class="sidebar-link btn-succss" href="{{path_to_from_file }}" style="background-color:#07468B; border-radius: 40px; color: white !important; font-weight: 550">
+          <i class="align-middle me-2 fas fa-upload text-white"></i> <span class="align-middle">Upload CSV data</span>
+        </a>
+      </li> 
+    </ul>
+  </div>
+</nav>
